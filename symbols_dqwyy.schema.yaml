@@ -1,0 +1,60 @@
+# Rime schema named symbols_dqwyy, customizated by dqwyy.
+# encoding: utf-8 (no BOM)
+schema:
+  schema_id: symbols_dqwyy
+  name: 自訂符號 by dqwyy
+  version: "1.0"
+  author:
+    - "dqwyy <me@dqwyy.moe>"
+  description: |
+    dqwyy自訂的特殊符號輸入方案，替換`的反查功能。
+switches:
+  - name: ascii_mode
+engine:
+  processors:
+    - ascii_composer
+    - key_binder
+    - speller
+    - recognizer
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - matcher
+    - ascii_segmentor
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    - "abbrev/^.+$/all/"
+    - "abbrev/^[a-z,]+;([a-z])[a-z]*'?([a-z])?[a-z]*'?([a-z])?[a-z]*`?[a-z]*$/$1$2$3/"
+    - "derive/^[a-z,]+;([a-z]+)'?([a-z]*)'?([a-z]*)`?[a-z]*$/$1$2$3/"
+    - "derive/^[^`]+`([a-z]+)$/$1/"
+    - "derive/^[a-z]+,([a-z]+)(;[a-z'`]+)?$/$1/"
+    - "derive/^([a-z]+),?[a-z]*;[a-z'`]+$/$1/"
+    - "xform/^([a-z]+),?([a-z]*);[a-z'`]+$/$1$2/"
+
+translator:
+  dictionary: symbols_dqwyy
+  spelling_hints: 1
+  comment_format:
+    - "xform/;[a-z'`]*$//"
+    - "xform/^/ /"
+    - "xform/,/ (/"
+    - xform/\((.*)$/\($1\)/
+
+key_binder:
+  import_preset: default
+
+punctuator:
+  import_preset: default
+
+recognizer:
+import_preset: default

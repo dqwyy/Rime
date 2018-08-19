@@ -1,0 +1,70 @@
+# 大千注音輸入方案自訂檔
+patch:
+  schema/name: "大千注音"
+  schema/author:
+    - "佛振 <chen.sst@gmail.com>"
+    - "dqwyy <me@dqwyy.moe>"
+  schema/description: |
+    注音符號輸入，採用「大千式」鍵盤排列。
+    
+    本方案採用「無模式」設計，以大寫字母鍵或上下方向鍵、回車鍵選詞；
+    空格鍵輸入第一聲，標記爲「ˉ」。也可省略聲調或韻母部份。
+    
+    請配合 librime>=0.9.8 使用。
+    
+  schema/version: 2.1    # log: 2.0~2.1
+  engine/processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor    # 取消語句流
+  punctuator/half_shape:
+    "!": {commit: "！"}
+    "\"": {pair: ["「", "」"]}
+    "#": {commit: "#"}
+    "$": {commit: "¥"}
+    "%": {commit: "%"} 
+    "&": {commit: "&"}
+    "'": {commit: "'"}
+    "(": {commit: "（"}
+    ")": {commit: "）"}
+    "*": {commit: "*"}
+    "+": {commit: "+"}
+    ":": ["：", "；", "《》", "『』", "“”"]
+    "<": {commit: "，"}
+    "=": {commit: "="}
+    ">": {commit: "。"}
+    "?": {commit: "？"}
+    "@": {commit: "@"}
+    "[": {commit: "["}
+    "\\": {commit: "、"}
+    "]": {commit: "]"}
+    "^": {commit: "……"}
+    _: {commit: "——"}
+    "`": {commit: "·"}
+    "{": {commit: "{"}
+    "|": {commit: "|"}
+    "}": {commit: "}"}
+    "~": {commit: "~"}
+  switches:
+    - name: ascii_mode
+      reset: 0
+    - name: full_shape
+    - name: ascii_punct
+    - name: zh_simp    # 默認輸出簡體字
+      reset: 1
+  simplifier:
+    option_name: zh_simp
+  menu:
+    alternative_select_keys: JWERT
+  schema/dependencies:
+    - symbols_dqwyy
+  reverse_lookup:
+    dictionary: symbols_dqwyy
+    enable_completion: false
+    prefix: "`"
+    tips: "　特殊符號"
