@@ -55,10 +55,12 @@ patch:
       reset: 0
     - name: full_shape
     - name: ascii_punct
-    - name: zh_simp    # 默認輸出簡體字
+    - name: simplification    # 默認輸出簡體字
       reset: 1
-  simplifier:
-    option_name: zh_simp
+#    - name: zh_simp    # 默認輸出簡體字
+#      reset: 1
+#  simplifier:
+#    option_name: zh_simp
   menu:
     alternative_select_keys: JWERT
   schema/dependencies:

@@ -11,8 +11,7 @@ patch:
   "key_binder/bindings":
     - {accept: minus, send: Page_Up, when: has_menu}
     - {accept: equal, send: Page_Down, when: has_menu}
-    - {accept: "Control+Shift+F", toggle: zh_simp, when: always}
-    - {accept: "Control+Shift+asciitilde", select: .next, when: always}
+    - {accept: "Control+Shift+F", toggle: simplification, when: always}
     - {accept: "Shift+space", toggle: full_shape, when: always}
     - {accept: "Control+period", toggle: ascii_punct, when: always}
   schema_list:

@@ -2,8 +2,8 @@
 # encoding: utf-8 (no BOM)
 schema:
   schema_id: symbols_dqwyy
-  name: 自訂符號 by dqwyy
-  version: "1.0"
+  name: symbols_dqwyy
+  version: "1.0.20180820"
   author:
     - "dqwyy <me@dqwyy.moe>"
   description: |
